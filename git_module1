@@ -1,0 +1,32 @@
+trades = [2, -1, 3, -1, 1, -1, 2, -1, -1, 3, 
+          1, -1, 2, -1, 1, 3, -1, 2, -1, 1,
+          -1, 2, 3, -1, 1, -1, -1, 2, 3, -1,
+          1, 2, -1, 1, -1, 3, -1, 1, 2, -1,
+          -1, 1, 3, -1, 2, -1, 1, -1, 2, 3]
+
+risque_euros = 10  # 1% de 1000€
+
+"""for i in range(len(trades)):
+    print(f"Trade {i+1} : {trades[i]*risque_euros}€")
+print("\n")"""
+
+trades_perdants = 0
+trades_gagnants = 0
+
+for i in range(len(trades)):
+    if trades[i] > 0:
+        print(f"Trade {i+1} : Gagnant de {trades[i]*risque_euros}€ !")
+        trades_gagnants = trades_gagnants + 1
+    else:
+        print(f"Trade {i+1} : Perdant avec {trades[i]*risque_euros}€.")
+        trades_perdants = trades_perdants + 1
+
+print(f"\nil y a {trades_perdants} trades perdants, soit {trades_perdants*risque_euros}€ de perdu.")
+print(f"Il y a {trades_gagnants} trades gagnants, soit {trades_gagnants*risque_euros}€ de gagner !")
+total_trades = (trades_gagnants*risque_euros)-(trades_perdants*risque_euros)
+
+if total_trades > 0:
+    print(f"\nDonc nous avons gagné {total_trades}€ !!!")
+else:
+    print(f"Nous avons perdu {total_trades}€...")
+
