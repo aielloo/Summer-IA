@@ -34,3 +34,34 @@ if total_net > 0:
 else:
     print(f"Nous avons perdu {total_net}€...")
 
+trades = [3, -1, 2, -1, 4, -1, 2, -1, 1, -1]
+risque_euros = 10
+
+for i in range(len(trades)):
+    if trades[i] < 0:
+        continue
+    #print(trades[i])
+print("\n–––– Trades réalisés –––—")
+print(f"La liste des trades : {trades}")
+print(f"Il y a {len(trades)} trades.")
+
+print("\n––– Trades Gagnants –––")
+trades_win = [trade for trade in trades if trade > 0]
+print(f"Voici la liste des trades gagnants : {trades_win}")
+print(f" Il y a {len(trades_win)} trades de gagnés sur {len(trades)}, ce qui fait une ––– WIN RATE ––– de {len(trades_win)/len(trades)*100}%.")
+
+print(f"\n––– BREAK –––")
+for i in range(len(trades)):
+    if trades[i] > 3:
+        print(f"Gros trade identifié au Trade {i+1} pour un montant de : {trades[i]}R ({trades[i]*risque_euros}€)")
+        break
+
+print(f"\n––– Montant Risqué –––")
+
+def calcul_test(capital, pct=1.0):
+    return capital*pct/100
+
+print(f"{calcul_test(4325, 3)}€, pour 3% d'un capital de 4 325€")
+print(f"{calcul_test(76891, 5)}€, pour 5% d'un capital de 76 891€")
+print(f"{calcul_test(1000, 2.5)}€, pour 2.5% d'un capital de 1 000€")
+
