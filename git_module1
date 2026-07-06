@@ -12,21 +12,25 @@ print("\n")"""
 
 trades_perdants = 0
 trades_gagnants = 0
+total_gagne = 0
+total_perdu = 0
 
 for i in range(len(trades)):
     if trades[i] > 0:
         print(f"Trade {i+1} : Gagnant de {trades[i]*risque_euros}€ !")
         trades_gagnants = trades_gagnants + 1
+        total_gagne = total_gagne + (trades[i] * risque_euros)
     else:
         print(f"Trade {i+1} : Perdant avec {trades[i]*risque_euros}€.")
         trades_perdants = trades_perdants + 1
+        total_perdu = total_perdu + (trades[i] * risque_euros)
 
-print(f"\nil y a {trades_perdants} trades perdants, soit {trades_perdants*risque_euros}€ de perdu.")
-print(f"Il y a {trades_gagnants} trades gagnants, soit {trades_gagnants*risque_euros}€ de gagner !")
-total_trades = (trades_gagnants*risque_euros)-(trades_perdants*risque_euros)
+print(f"\nIl y a {trades_perdants} trades perdants, pour un montant de {total_perdu}€.")
+print(f"Il y a {trades_gagnants} trades gagnants, pour un montant de {total_gagne}€ ! ")
+total_net = total_gagne + total_perdu
 
-if total_trades > 0:
-    print(f"\nDonc nous avons gagné {total_trades}€ !!!")
+if total_net > 0:
+    print(f"\nDonc nous avons gagné {total_net}€ !!!")
 else:
-    print(f"Nous avons perdu {total_trades}€...")
+    print(f"Nous avons perdu {total_net}€...")
 
